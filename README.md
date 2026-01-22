@@ -51,7 +51,6 @@ You must create the required table in your PostgreSQL database before running th
         split_strategy TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
-  
     ```
     
 ## 💻 Usage
@@ -60,23 +59,19 @@ Run the script from the command line by providing the path to the document you w
 
 Syntax:
 
-    ```bash
+     ```bash
         python index_documents.py <path_to_file>
-
-    ```
+     ```
 
 Example:
 
     ```bash
-
     python index_documents.py "./documents/employee_handbook.pdf"
-  
     ```
 
 Expected Output
 
     ```Plaintext
-
     Recieved input file: ./documents/employee_handbook.pdf
     Starting Process for: ./documents/employee_handbook.pdf 
     Reading file: ./documents/employee_handbook.pdf...

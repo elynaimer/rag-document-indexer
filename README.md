@@ -51,35 +51,38 @@ CREATE TABLE IF NOT EXISTS document_chunks (
     split_strategy TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+````
 💻 Usage
-Run the script from the command line by providing the path to the document you wish to index.
+    Run the script from the command line by providing the path to the document you wish to index.
 
-Syntax:
+    Syntax:
 
-Bash
+    ```bash
+    python index_documents.py <path_to_file>
+    ```
+    Example:
 
-python index_documents.py <path_to_file>
-Example:
+    ```bash
 
-Bash
+    python index_documents.py "./documents/employee_handbook.pdf"
+    ```
+    Expected Output
+    ```Plaintext
 
-python index_documents.py "./documents/employee_handbook.pdf"
-Expected Output
-Plaintext
-
-Recieved input file: ./documents/employee_handbook.pdf
-Starting Process for: ./documents/employee_handbook.pdf 
-Reading file: ./documents/employee_handbook.pdf...
-Split text into 12 paragraphs.
-Saving 12 chunks to DB
-Successfully saved 12 chunks to the database.
+    Recieved input file: ./documents/employee_handbook.pdf
+    Starting Process for: ./documents/employee_handbook.pdf 
+    Reading file: ./documents/employee_handbook.pdf...
+    Split text into 12 paragraphs.
+    Saving 12 chunks to DB
+    Successfully saved 12 chunks to the database.
+    ````
 🧩 Code Structure
-The project is structured around the DocumentIndexer class, which handles the entire pipeline:
+    The project is structured around the DocumentIndexer class, which handles the entire pipeline:
 
-extract_text(file_path): Determines file type (PDF/DOCX) and extracts raw text using pypdf or python-docx.
+    extract_text(file_path): Determines file type (PDF/DOCX) and extracts raw text using pypdf or python-docx.
 
-chunk_text(text): Splits the raw text into manageable pieces using a sliding window approach (default: 1000 characters with 100 overlap).
+    chunk_text(text): Splits the raw text into manageable pieces using a sliding window approach (default: 1000 characters with 100 overlap).
 
-get_embedding(text): Sends the chunk to Google Gemini API and retrieves the vector embedding.
+    get_embedding(text): Sends the chunk to Google Gemini API and retrieves the vector embedding.
 
-save_to_db(...): Connects to PostgreSQL and safely inserts the text, embedding, and metadata.
+    save_to_db(...): Connects to PostgreSQL and safely inserts the text, embedding, and metadata.

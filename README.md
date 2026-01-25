@@ -91,3 +91,7 @@ Expected Output
     get_embedding(text): Sends the chunk to Google Gemini API and retrieves the vector embedding.
 
     save_to_db(...): Connects to PostgreSQL and safely inserts the text, embedding, and metadata.
+
+## Running Example
+
+    <img width="1401" height="354" alt="image" src="https://github.com/user-attachments/assets/91638602-22af-450c-8d6b-6ba6ce106c61" />
